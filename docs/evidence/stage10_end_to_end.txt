@@ -1,0 +1,14 @@
+HTTP/1.1 200 OK
+Vary: Origin
+server: Werkzeug/3.1.9 Python/3.12.3
+date: Mon, 19 Oct 2026 09:30:01 GMT
+content-type: application/json
+content-length: 76
+connection: close
+
+{"features":18,"model_version":"1.0","status":"ok","task":"classification"}
+
+$ (browser) http://localhost:4200 -> Fill sample record -> Run local prediction
+Viral (class 1) | Viral probability: 82.4% | decision threshold 0.600
+$ (browser) blank submit -> "Enter a value for Platform"
+$ (browser) Flask stopped -> "API error 502: Http failure response for http://localhost:4200/api/predict: 502 Bad Gateway"

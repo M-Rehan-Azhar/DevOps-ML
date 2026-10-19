@@ -1,0 +1,145 @@
+{
+  "platform": {
+    "kind": "category",
+    "options": [
+      "Facebook",
+      "Instagram",
+      "Reddit",
+      "TikTok",
+      "Twitter",
+      "YouTube"
+    ]
+  },
+  "hour_of_day": {
+    "kind": "number",
+    "min": 1.0,
+    "max": 23.0
+  },
+  "day_of_week": {
+    "kind": "category",
+    "options": [
+      "0",
+      "1",
+      "2",
+      "3",
+      "4",
+      "5",
+      "6"
+    ]
+  },
+  "is_weekend": {
+    "kind": "number",
+    "min": 0.0,
+    "max": 1.0
+  },
+  "followers": {
+    "kind": "number",
+    "min": 0.0,
+    "max": 148605537.0
+  },
+  "account_age_days": {
+    "kind": "number",
+    "min": 30.0,
+    "max": 3649.0
+  },
+  "verified": {
+    "kind": "number",
+    "min": 0.0,
+    "max": 1.0
+  },
+  "topic": {
+    "kind": "category",
+    "options": [
+      "AI/ML",
+      "Business",
+      "Climate",
+      "Education",
+      "Entertainment",
+      "Fashion",
+      "Finance",
+      "Food",
+      "Gaming",
+      "Health",
+      "Politics",
+      "Science",
+      "Sports",
+      "Technology",
+      "Travel"
+    ]
+  },
+  "language": {
+    "kind": "category",
+    "options": [
+      "Arabic",
+      "Chinese",
+      "English",
+      "French",
+      "German",
+      "Hindi",
+      "Japanese",
+      "Korean",
+      "Portuguese",
+      "Spanish"
+    ]
+  },
+  "content_length": {
+    "kind": "number",
+    "min": 10.0,
+    "max": 499.0
+  },
+  "media_type": {
+    "kind": "category",
+    "options": [
+      "Image",
+      "Link",
+      "Poll",
+      "Text",
+      "Video"
+    ]
+  },
+  "num_hashtags": {
+    "kind": "number",
+    "min": 0.0,
+    "max": 10.0
+  },
+  "sentiment_category": {
+    "kind": "category",
+    "options": [
+      "Negative",
+      "Neutral",
+      "Positive"
+    ]
+  },
+  "sentiment_positive": {
+    "kind": "number",
+    "min": 0.01,
+    "max": 0.95
+  },
+  "sentiment_negative": {
+    "kind": "number",
+    "min": -0.149,
+    "max": 0.95
+  },
+  "sentiment_neutral": {
+    "kind": "number",
+    "min": -0.099,
+    "max": 0.899
+  },
+  "toxicity_score": {
+    "kind": "number",
+    "min": 0.0,
+    "max": 100.0
+  },
+  "location": {
+    "kind": "category",
+    "options": [
+      "Africa",
+      "Asia",
+      "Europe",
+      "North America",
+      "Oceania",
+      "South America",
+      "Unknown"
+    ]
+  }
+}

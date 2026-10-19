@@ -1,0 +1,28 @@
+$ curl -i http://127.0.0.1:5000/health
+HTTP/1.1 200 OK
+Server: Werkzeug/3.1.9 Python/3.12.3
+Date: Mon, 19 Oct 2026 09:28:54 GMT
+Content-Type: application/json
+Content-Length: 76
+Connection: close
+
+{"features":18,"model_version":"1.0","status":"ok","task":"classification"}
+
+$ curl -i -X POST /predict --data-binary @backend/test_payload.json
+HTTP/1.1 200 OK
+Server: Werkzeug/3.1.9 Python/3.12.3
+Date: Mon, 19 Oct 2026 09:28:54 GMT
+Content-Type: application/json
+Content-Length: 231
+Connection: close
+
+{"disclaimer":"Research/teaching prototype only.","label":"Viral","prediction":1,"probabilities":[0.17628077516277196,0.823719224837228],"task":"classification","threshold":0.6003003902727145,"viral_probability":0.823719224837228}
+
+$ python backend/test_api.py
+HTTP Status: 200
+Response: {"disclaimer":"Research/teaching prototype only.","label":"Viral","prediction":1,"probabilities":[0.17628077516277196,0.823719224837228],"task":"classification","threshold":0.6003003902727145,"viral_probability":0.823719224837228}
+
+PASS: API request
+$ python -m pytest -q backend/tests
+.........                                                                [100%]
+9 passed in 0.75s

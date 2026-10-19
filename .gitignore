@@ -1,0 +1,29 @@
+# Python and local environments
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.env
+.env.*
+!.env.example
+
+# Angular dependencies and build outputs
+frontend/node_modules/
+frontend/dist/
+frontend/.angular/
+
+# OS / editor
+.DS_Store
+Thumbs.db
+
+# Private data and unapproved artifacts
+# The full 150,000-row training CSV stays local; only the
+# non-sensitive data/sample_inputs.csv is published.
+data/multi_platform_social_sentiment_evolution.csv
+# Uncomment the next two lines if your data/models cannot be published:
+# data/
+# backend/models/
+
+# Local logs
+*.log
+catboost_info/

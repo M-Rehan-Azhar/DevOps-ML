@@ -1,0 +1,20 @@
+{
+  "platform": "YouTube",
+  "hour_of_day": 17,
+  "day_of_week": 6,
+  "is_weekend": 1,
+  "followers": 7774,
+  "account_age_days": 307,
+  "verified": 0,
+  "topic": "Sports",
+  "language": "English",
+  "content_length": 143,
+  "media_type": "Image",
+  "num_hashtags": 3,
+  "sentiment_category": "Positive",
+  "sentiment_positive": 0.864,
+  "sentiment_negative": 0.022,
+  "sentiment_neutral": 0.114,
+  "toxicity_score": 12.0,
+  "location": "Asia"
+}

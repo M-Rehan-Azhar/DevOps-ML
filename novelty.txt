@@ -1,0 +1,66 @@
+Project: Social Media Virality Prediction - Full-Stack ML with CI/CD
+Student: Muhammad Rehan Azhar (232074)
+
+NOVELTY / CONTRIBUTION COMPARED TO EXISTING WORK
+================================================
+
+1. Pre-publication (leakage-safe) prediction
+   Most existing virality studies predict "viral" posts using engagement
+   signals such as likes, shares, comments, views or engagement rate. These
+   values are only known after the post has already spread, so the model is
+   partly reading the answer (target leakage) and cannot be used before
+   publishing. This project removes every engagement-derived column (likes,
+   shares, comments, views, total_engagement, engagement_rate_per_1k_followers,
+   viral_coefficient, cross_platform_spread, engagement_per_view,
+   engagement_velocity, discussion_ratio) and predicts virality only from
+   information available at posting time: platform, timing, account,
+   content, sentiment and toxicity.
+
+2. Engineered account feature that is safe to use
+   follower_growth_rate = followers / (account_age_days + 1) captures how
+   fast an account has grown without using any post-performance data. It is
+   computed identically in training and in the deployed API.
+
+3. Clear, balanced target definition
+   Instead of a rare "top 1%" label, a post is viral when its
+   viral_coefficient is above the 75th percentile (2.39). This gives a
+   usable 75/25 classification problem and a target that is easy to explain.
+
+4. Model choice and decision threshold
+   CatBoost with native categorical handling (no one-hot explosion for
+   7 categorical features) was compared against a Logistic Regression
+   baseline. The decision threshold (0.6003) is tuned for F1 on a separate
+   validation set and frozen before a single evaluation on the untouched
+   test set, instead of using the default 0.5.
+   Held-out test results: Accuracy 0.8116, Precision 0.6024, Recall 0.7218,
+   F1 0.6567, ROC-AUC 0.8742, PR-AUC 0.7237.
+
+5. From notebook to a working, reproducible application
+   Existing papers usually stop at reporting metrics. This project deploys
+   the model end-to-end:
+   - Flask REST API (/health, /schema, /predict) with input validation
+     (exact feature set, allowed categories and training-data ranges);
+   - an inference adapter that reproduces the notebook's predictions exactly
+     (verified on all 22,500 test rows, maximum difference 0.0);
+   - an Angular 22 form generated from the same schema, so the UI and the
+     API can never disagree on feature names or allowed values.
+
+6. Automated MLOps / CI-CD pipeline
+   - GitHub Actions runs backend tests (including real model predictions)
+     and the Angular build on every push and pull request;
+   - GitHub Actions automatically deploys the frontend to GitHub Pages on
+     every push to main;
+   - the static deployment clearly states that live predictions require the
+     local Flask backend (no false claim of hosted inference).
+
+7. Responsible-use safeguards
+   The full dataset is not published, the sample record contains no user or
+   post IDs, the target column is rejected by the API, and all outputs carry
+   a research/teaching disclaimer.
+
+SUMMARY
+-------
+The new contribution is a leakage-free, pre-publication virality predictor
+that is not only evaluated but packaged, validated, tested and continuously
+deployed as a full-stack application, with the deployed predictions shown to
+match the research notebook exactly.
